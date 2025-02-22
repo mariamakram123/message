@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Message for Kunain</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffccdd;
+            font-family: 'Arial', sans-serif;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .heart {
+            color: red;
+            font-size: 50px;
+            animation: heartbeat 1s infinite alternate;
+        }
+        @keyframes heartbeat {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+        .message {
+            font-size: 24px;
+            color: #d63384;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .hidden-message {
+            display: none;
+            font-size: 20px;
+            color: #6a0572;
+            margin-top: 10px;
+        }
+        .reveal-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .reveal-btn:hover {
+            background-color: #ff3385;
+        }
+        .floating-heart {
+            position: absolute;
+            color: pink;
+            font-size: 30px;
+            animation: floatUp 5s infinite ease-in-out;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+        .bow {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: url('https://i.imgur.com/6M3xJgO.png') no-repeat center/contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart">❤️</div>
+    <div class="message">You are the best person, Kunain!</div>
+    <button class="reveal-btn" onclick="showMessage()">Click me!</button>
+    <div class="hidden-message" id="hiddenMessage">I appreciate you so much! 💖</div>
+    
+    <script>
+        function showMessage() {
+            document.getElementById('hiddenMessage').style.display = 'block';
+        }
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('floating-heart');
+            document.body.appendChild(heart);
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createFloatingHeart, 500);
+        
+        function createBow() {
+            const bow = document.createElement('div');
+            bow.classList.add('bow');
+            bow.style.left = Math.random() * 100 + 'vw';
+            bow.style.top = Math.random() * 100 + 'vh';
+            document.body.appendChild(bow);
+        }
+        for(let i = 0; i < 5; i++) {
+            createBow();
+        }
+    </script>
+</body>
+</html>
